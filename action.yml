@@ -5,9 +5,24 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
+  version_of_release: # id of input
+    description: 'texttt'
+    required: true
+    default: 'v1.0 data'
+    
 outputs:
   time: # id of output
     description: 'The time we greeted you'
+  ver: 
+    description:  'The most important changes are downgrading the artifact to java7 (from 8) and switching to gmavenplus plugin to compile groovy.
+          Besides that, there is a lot of restructuring inside of the pom.xml file
+
+          # Misc
+
+          * Polishing (f2ec0bb, 9e2ae89 and 8654493)
+
+          _Reviewed by_: @neslob'  
+          
 runs:
   using: 'node12'
   main: 'dist/index.js'
