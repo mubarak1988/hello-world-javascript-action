@@ -21,7 +21,7 @@ jobs:
               tag_name: ${{ github.ref }}
               release_name: Release ${{ github.ref }}
               body: |
-                ${{ steps.hello.outputs.ver }}
+                ${{ steps.create_release.outputs.ver }}
               draft: false
               prerelease: false  
   
