@@ -11,9 +11,9 @@ try {
 	const payload = JSON.stringify(github.context.payload, undefined, 2);
 	console.log(`The event payload: ${payload}`);
 
-	const ver = core.getInput('version_of_release');
-	console.log(`Hello ${ver}!`);
-	core.setOutput("time", ver);
+	const version = core.getInput('version_of_release');
+	console.log(`Hello ${version}!`);
+	core.setOutput("ver", version);
 } catch (error) {
 	core.setFailed(error.message);
 }
