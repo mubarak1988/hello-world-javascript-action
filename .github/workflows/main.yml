@@ -24,7 +24,7 @@ jobs:
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }} "
       - id: step1
-        run: echo "::set-output name=test::${{ steps.hello.outputs.ver }}"
+        run: echo "::set-output name=test::'${{ steps.hello.outputs.ver }}'"
   
   release_note:
         name: Create Release
