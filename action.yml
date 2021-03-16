@@ -1,6 +1,10 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
   version_of_release: # id of input
     description: 'texttt'
     required: true
@@ -14,6 +18,8 @@ inputs:
           _Reviewed by_: @neslob'  
   
 outputs:
+  time: # id of output
+    description: 'The time we greeted you'
   ver: # id of output
     description: 'vvv'
 runs:
