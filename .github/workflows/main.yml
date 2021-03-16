@@ -25,7 +25,7 @@ jobs:
         run: echo "The time was ${{ steps.hello.outputs.time }} "
       - id: step1
         run: |
-          description=hello
+          description=${{ steps.hello.outputs.ver }}
           echo $description
           description="${description//'%'/'%25'}" 
           description="${description//$'\n'/'%0A'}"
@@ -52,7 +52,7 @@ jobs:
               tag_name: ${{ github.ref }}
               release_name: Release ${{ github.ref }}
               body: |
-                ${{needs.hello_world_job.outputs.output1}}"
+                ${{needs.hello_world_job.outputs.output1}}
               draft: false
               prerelease: false  
   
