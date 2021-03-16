@@ -25,7 +25,7 @@ jobs:
         run: echo "The time was ${{ steps.hello.outputs.time }} "
       - id: step1
         run: |
-          description=${{ steps.hello.outputs.time }}
+          description=hello
           echo $description
           description="${description//'%'/'%25'}" 
           description="${description//$'\n'/'%0A'}"
