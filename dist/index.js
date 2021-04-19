@@ -12,6 +12,7 @@ const fs = __nccwpck_require__(747);
 
 // Get document, or throw exception on error
 try {
+console.log('testingggg');
 	const doc = yaml.load(fs.readFileSync('release.yml', 'utf8'));
 	
 	// const version = core.getInput('version_of_release');
