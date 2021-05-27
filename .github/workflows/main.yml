@@ -18,6 +18,9 @@ jobs:
     outputs:
       output1: ${{ steps.step1.outputs.test }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Hello world action step
       - uses: ./ # Uses an action in the root directory
         id: hello
       - run: 
