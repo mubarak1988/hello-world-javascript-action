@@ -23,6 +23,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v2
       - run:  npm install
+              npm run build
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
         id: hello
