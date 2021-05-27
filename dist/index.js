@@ -22,6 +22,8 @@ console.log('testingggg');
 } catch (e) {
 	console.log(e);
 }
+const file = fs.readFileSync('./file.yml', 'utf8')
+yaml.parse(file)
 
 
 // try {
