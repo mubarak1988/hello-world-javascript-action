@@ -13,13 +13,13 @@ jobs:
     #   with:
     #     repo-token: "${{ secrets.GITHUB_TOKEN }}"
     #     tag: "my_tag"
+    
     name: release notes
     outputs:
       output1: ${{ steps.step1.outputs.test }}
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      - uses: ./ # Uses an action in the root directory
+        id: hello
       - run: 
             echo ${{ steps.hello.outputs}}
             description=${{ steps.hello.outputs.ver }}
