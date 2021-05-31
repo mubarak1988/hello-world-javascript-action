@@ -30,9 +30,10 @@ jobs:
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
         id: hello
+        
       - run: 
-          export description=test.com
-          export tag_name=r1
+          description=test.com
+          tag_name=r1
           description="${description//'%'/'%25'}"
           description="${description//$'\n'/'%0A'}"
           description="${description//$'\r'/'%0D'}"
@@ -41,6 +42,7 @@ jobs:
           echo "::set-output name=tag::$tag_name"
 
       - run: echo $body
+      - run: echo $tag
 
   release_note:
     name: Create Release
