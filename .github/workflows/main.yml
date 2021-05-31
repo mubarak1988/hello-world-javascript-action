@@ -42,9 +42,9 @@ jobs:
           # echo "::set-output name=body::testsssssdsdasdsads"
           # echo "::set-output name=tag::$tag_name"
       - id: step1
-        run: echo "::set-output name=test::hello"
+        run: echo "::set-output name=test::${{ steps.hello.outputs.lat_body }}"
       - id: step2
-        run: echo "::set-output name=test::world"
+        run: echo "::set-output name=test::${{ steps.hello.outputs.lat_tag }}"
       # - run: echo $body
       # - run: echo $tag
 
