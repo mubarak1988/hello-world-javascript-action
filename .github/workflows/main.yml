@@ -16,8 +16,10 @@ jobs:
 
     name: release notes
     outputs:
-      latest_release_tag: ${{ steps.hello.outputs.tag }}
-      latest_release_body: ${{ steps.hello.outputs.body }}
+      #latest_release_tag: ${{ steps.hello.outputs.tag }}
+      #latest_release_body: ${{ steps.hello.outputs.body }}
+      output1: ${{ steps.step1.outputs.test }}
+      output2: ${{ steps.step2.outputs.test }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -29,19 +31,22 @@ jobs:
           npm run build
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
-        id: hello     
-      - run: 
-          description=test.com
-          tag_name=r1
-          description="${description//'%'/'%25'}"
-          description="${description//$'\n'/'%0A'}"
-          description="${description//$'\r'/'%0D'}"
-          echo $description
-          echo "::set-output name=body::testsssssdsdasdsads"
-          echo "::set-output name=tag::$tag_name"
-
-      - run: echo $body
-      - run: echo $tag
+      #   id: hello     
+      # - run: 
+          # description=test.com
+          # tag_name=r1
+          # description="${description//'%'/'%25'}"
+          # description="${description//$'\n'/'%0A'}"
+          # description="${description//$'\r'/'%0D'}"
+          # echo $description
+          # echo "::set-output name=body::testsssssdsdasdsads"
+          # echo "::set-output name=tag::$tag_name"
+      - id: step1
+        run: echo "::set-output name=test::hello"
+      - id: step2
+        run: echo "::set-output name=test::world"
+      # - run: echo $body
+      # - run: echo $tag
 
   release_note:
     name: Create Release
@@ -53,16 +58,17 @@ jobs:
           actions/checkout@v2
           # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "This vhhhhers  ${{needs.hello_world_job.outputs.latest_release_tag}}"
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{needs.hello_world_job.outputs.latest_release_tag}}
-          release_name: Release ${{needs.hello_world_job.outputs.latest_release_tag}}
-          body: |
-            ${{needs.hello_world_job.outputs.latest_release_body}}
-          draft: false
-          prerelease: false
+        run: echo ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
+      #   run: echo "This vhhhhers  ${{needs.hello_world_job.outputs.latest_release_tag}}"
+      # - name: Create Release
+      #   id: create_release
+      #   uses: actions/create-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      #   with:
+      #     tag_name: ${{needs.hello_world_job.outputs.latest_release_tag}}
+      #     release_name: Release ${{needs.hello_world_job.outputs.latest_release_tag}}
+      #     body: |
+      #       ${{needs.hello_world_job.outputs.latest_release_body}}
+      #     draft: false
+      #     prerelease: false
