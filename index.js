@@ -12,7 +12,7 @@ try {
 	// console.log(`Hello ${version}!`);
 	// Get the array of keys
 	const keysSorted = Object.keys(doc).sort(function (a, b) { return b - a })
-	core.setOutput("lat_tag", keysSorted[0]);
+	core.setOutput("lat_tag", JSON.stringify(keysSorted[0]));
 	// const value = doc[keysSorted[0]].replace(/^\s+|\s+$/g, "");
 	const value = JSON.stringify(doc[keysSorted[0]]);
 	core.setOutput("lat_body", value);
