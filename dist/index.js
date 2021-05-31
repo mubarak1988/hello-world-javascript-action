@@ -26,7 +26,7 @@ try {
 	for (let i = 0; i < keysSorted.length; i++) {
 		const obj = {};
 		obj.per = keysSorted[i];
-		obj.val = list[keysSorted[i]];
+		obj.val = doc[keysSorted[i]];
 		arr.push(obj);
 	}
 
