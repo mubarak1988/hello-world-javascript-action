@@ -39,7 +39,7 @@ jobs:
             description="${description//$'\r'/'%0D'}" 
             echo $description
             echo "::set-output name=body::$description"
-            echo "::set-output name=tag::${{ steps.hello.outputs.lat_tag }}
+            echo "::set-output name=tag::${{ steps.hello.outputs.lat_tag }}"
   
   release_note:
         name: Create Release
