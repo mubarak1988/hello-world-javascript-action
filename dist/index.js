@@ -21,7 +21,9 @@ try {
 	const keysSorted = Object.keys(doc).sort(function (a, b) { return b - a })
 	core.setOutput("lat_tag", JSON.stringify(keysSorted[0]));
 	// const value = doc[keysSorted[0]].replace(/^\s+|\s+$/g, "");
-	const value = JSON.stringify(doc[keysSorted[0]['body']]);
+	const value = JSON.stringify(doc[keysSorted[0]]);
+	value = value['body'];
+	console.log(value);
 	core.setOutput("lat_body", value);
 
 	// const arr = [];
@@ -34,7 +36,7 @@ try {
 	// }
 
 	console.log(keysSorted[0]);
-	console.log(doc[keysSorted[0]['body']]);
+	console.log(doc[keysSorted[0]]);
 	console.log('finished ---');
 	//core.setOutput("ver", doc);
 	//console.log(doc);
