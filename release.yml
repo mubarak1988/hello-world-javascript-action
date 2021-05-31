@@ -1,4 +1,4 @@
-1.1:
+1.0:
     body:
           'The most important changes are downgrading the artifact to java7 (from 8) and switching to gmavenplus plugin to compile groovy.
           Besides that, there is a lot of restructuring inside of the pom.xml file
@@ -8,3 +8,13 @@
           * Polishing (f2ec0bb, 9e2ae89 and 8654493)
 
           _Reviewed by_: @neslob' 
+1.1:
+    body:
+          'The mosta important changes are downgrading the artifact to java7 (from 8) and switching to gmavenplus plugin to compile groovy.
+          Besides that, there is a lot of restructuring inside of the pom.xml file
+
+          # Misc
+
+          * Polishing (f2ec0bb, 9e2ae89 and 8654493)
+
+          _Reviewed by_: @neslob'           
