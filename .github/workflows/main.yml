@@ -16,8 +16,8 @@ jobs:
 
     name: release notes
     outputs:
-      latest_release_tag: ${{ steps.step1.outputs.tag }}
-      latest_release_body: ${{ steps.step1.outputs.body }}
+      latest_release_tag: ${{ steps.hello.outputs.tag }}
+      latest_release_body: ${{ steps.hello.outputs.body }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -29,8 +29,7 @@ jobs:
           npm run build
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
-        id: hello
-        
+        id: hello     
       - run: 
           description=test.com
           tag_name=r1
