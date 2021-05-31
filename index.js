@@ -13,8 +13,9 @@ try {
 	// Get the array of keys
 	const keysSorted = Object.keys(doc).sort(function (a, b) { return b - a })
 	core.setOutput("lat_tag", keysSorted[0]);
-	core.setOutput("lat_body", doc[keysSorted[0]]);
-	
+	const value = doc[keysSorted[0]].replace(/^\s+|\s+$/g, "");
+	core.setOutput("lat_body", value);
+
 	// const arr = [];
 	// // Adding the sorted result to an array of object
 	// for (let i = 0; i < keysSorted.length; i++) {
