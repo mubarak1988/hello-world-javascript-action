@@ -42,7 +42,7 @@ jobs:
           # echo "::set-output name=body::testsssssdsdasdsads"
           # echo "::set-output name=tag::$tag_name"
       - id: step1
-        run: 
+        run: |
           description='${{ steps.hello.outputs.lat_body }}'
           echo "::set-output name=test::$description"
       - id: step2
