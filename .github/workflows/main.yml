@@ -18,8 +18,8 @@ jobs:
     outputs:
       #latest_release_tag: ${{ steps.hello.outputs.tag }}
       #latest_release_body: ${{ steps.hello.outputs.body }}
-      output1: ${{ steps.step1.outputs.test }}
-      output2: ${{ steps.step2.outputs.test }}
+      latest_rel_body: ${{ steps.step1.outputs.test }}
+      latest_rel_tag: ${{ steps.step2.outputs.test }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -47,8 +47,6 @@ jobs:
           echo "::set-output name=test::$description"
       - id: step2
         run: echo "::set-output name=test::${{ steps.hello.outputs.lat_tag }}"
-      # - run: echo $body
-      # - run: echo $tag
 
   release_note:
     name: Create Release
@@ -60,17 +58,17 @@ jobs:
           actions/checkout@v2
           # Use the output from the `hello` step
       - name: Get the output time
-        run: echo ${{needs.hello_world_job.outputs.output1}} ${{needs.hello_world_job.outputs.output2}}
-      #   run: echo "This vhhhhers  ${{needs.hello_world_job.outputs.latest_release_tag}}"
-      # - name: Create Release
-      #   id: create_release
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-      #   with:
-      #     tag_name: ${{needs.hello_world_job.outputs.latest_release_tag}}
-      #     release_name: Release ${{needs.hello_world_job.outputs.latest_release_tag}}
-      #     body: |
-      #       ${{needs.hello_world_job.outputs.latest_release_body}}
-      #     draft: false
-      #     prerelease: false
+        run: echo ${{needs.hello_world_job.outputs.latest_rel_body}} ${{needs.hello_world_job.outputs.latest_rel_tag}}
+       
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{needs.hello_world_job.outputs.latest_rel_tag}}
+          release_name: Release ${{needs.hello_world_job.outputs.latest_rel_tag}}
+          body: |
+            ${{needs.hello_world_job.outputs.latest_rel_body}}
+          draft: false
+          prerelease: false
