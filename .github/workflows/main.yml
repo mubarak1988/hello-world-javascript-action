@@ -81,9 +81,8 @@ jobs:
         with:
           tag: ${{needs.hello_world_job.outputs.latest_rel_tag}}
           name: Release ${{needs.hello_world_job.outputs.latest_rel_tag}}
-          release_name: Release ${{needs.hello_world_job.outputs.latest_rel_tag}}
           body: |
             ${{needs.hello_world_job.outputs.latest_rel_body}}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          token: ${{ secrets.GITHUB_TOKEN }}  
           allowUpdates: true
   
