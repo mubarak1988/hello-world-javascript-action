@@ -43,11 +43,11 @@ jobs:
           # echo "::set-output name=tag::$tag_name"
       - id: step1
         run: |
-          description=${{ steps.hello.outputs.lat_body }}
-          description="${description//'%'/'%25'}"
-          description="${description//$'\n'/'%0A'}"
-          description="${description//$'\r'/'%0D'}"
-          echo "::set-output name=test::$description"
+          description='${{ steps.hello.outputs.lat_body }}'
+          # description="${description//'%'/'%25'}"
+          # description="${description//$'\n'/'%0A'}"
+          # description="${description//$'\r'/'%0D'}"
+          # echo "::set-output name=test::$description"
       - id: step2
         run: echo "::set-output name=test::${{ steps.hello.outputs.lat_tag }}"
 
