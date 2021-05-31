@@ -30,7 +30,7 @@ jobs:
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
         id: hello
-      - run: printf '%s\n ${{ steps.hello.outputs}}
+      - run: 
           export description=test.com
           export tag_name=r1
           description="${description//'%'/'%25'}"
