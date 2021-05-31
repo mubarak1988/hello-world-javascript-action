@@ -1,6 +1,6 @@
 1.0:
     body:
-          'The most important changes are downgrading the artifact to java7 (from 8) and switching to gmavenplus plugin to compile groovy.
+          'The mosts important changes are downgrading the artifact to java7 (from 8) and switching to gmavenplus plugin to compile groovy.
           Besides that, there is a lot of restructuring inside of the pom.xml file
 
           # Misc
