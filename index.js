@@ -5,11 +5,23 @@ const fs = require('fs');
 
 // Get document, or throw exception on error
 try {
-console.log('testingggg');
+	console.log('testingggg');
 	const doc = yaml.load(fs.readFileSync('release.yml', 'utf8'));
-	
+
 	// const version = core.getInput('version_of_release');
 	// console.log(`Hello ${version}!`);
+	// Get the array of keys
+	var keys = Object.keys(doc);
+
+	// Sort the keys in descending order
+	keys.sort(function (a, b) { return b - a; });
+
+	// Iterate through the array of keys and access the corresponding object properties
+	for (var i = 0; i < keys.length; i++) {
+		console.log(keys[i], obj[keys[i]]);
+		
+	}
+	console.log('finished ---');
 	core.setOutput("ver", doc);
 	console.log(doc);
 } catch (e) {
