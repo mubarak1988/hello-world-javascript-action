@@ -19,21 +19,23 @@ try {
 	// console.log(`Hello ${version}!`);
 	// Get the array of keys
 	const keysSorted = Object.keys(doc).sort(function (a, b) { return b - a })
-	console.log(keysSorted);
+	core.setOutput("lat_tag", keysSorted[0]);
+	core.setOutput("lat_body", doc[keysSorted[0]]);
+	
+	// const arr = [];
+	// // Adding the sorted result to an array of object
+	// for (let i = 0; i < keysSorted.length; i++) {
+	// 	const obj = {};
+	// 	obj.per = keysSorted[i];
+	// 	obj.val = doc[keysSorted[i]];
+	// 	arr.push(obj);
+	// }
 
-	const arr = [];
-	// Adding the sorted result to an array of object
-	for (let i = 0; i < keysSorted.length; i++) {
-		const obj = {};
-		obj.per = keysSorted[i];
-		obj.val = doc[keysSorted[i]];
-		arr.push(obj);
-	}
-
-	console.log(arr);
+	console.log(keysSorted[0]);
+	console.log(doc[keysSorted[0]]);
 	console.log('finished ---');
-	core.setOutput("ver", doc);
-	console.log(doc);
+	//core.setOutput("ver", doc);
+	//console.log(doc);
 } catch (e) {
 	console.log(e);
 }
