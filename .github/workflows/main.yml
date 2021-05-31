@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: "14"
       - run: npm install
-          npm run build
+          npm run build && git add dist/
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
         id: hello     
@@ -63,15 +63,27 @@ jobs:
       - name: Outputs from previous job
         run: echo ${{needs.hello_world_job.outputs.latest_rel_body}} ${{needs.hello_world_job.outputs.latest_rel_tag}}
        
+      # - name: Create Release
+      #   id: create_release
+      #   uses: actions/create-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      #   with:
+      #     tag_name: ${{needs.hello_world_job.outputs.latest_rel_tag}}
+      #     release_name: Release ${{needs.hello_world_job.outputs.latest_rel_tag}}
+      #     body: |
+      #       ${{needs.hello_world_job.outputs.latest_rel_body}}
+      #     draft: false
+      #     prerelease: false
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{needs.hello_world_job.outputs.latest_rel_tag}}
+          tag: ${{needs.hello_world_job.outputs.latest_rel_tag}}
+          name: Release ${{needs.hello_world_job.outputs.latest_rel_tag}}
           release_name: Release ${{needs.hello_world_job.outputs.latest_rel_tag}}
           body: |
             ${{needs.hello_world_job.outputs.latest_rel_body}}
-          draft: false
-          prerelease: false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          allowUpdates: true
+  
