@@ -31,7 +31,7 @@ jobs:
           npm run build
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
-      #   id: hello     
+        id: hello     
       # - run: 
           # description=test.com
           # tag_name=r1
