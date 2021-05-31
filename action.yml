@@ -22,6 +22,10 @@ outputs:
     description: 'The time we greeted you'
   ver: # id of output
     description: 'vvv'
+  lat_tag:
+    description: latest tag  
+  lat_body:
+    description: latest body   
 runs:
   using: 'node12'
   main: 'dist/index.js'
