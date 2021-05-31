@@ -58,7 +58,7 @@ jobs:
           actions/checkout@v2
           # Use the output from the `hello` step
       - name: Get the output time
-        run: echo ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
+        run: echo ${{needs.hello_world_job.outputs.output1}} ${{needs.hello_world_job.outputs.output2}}
       #   run: echo "This vhhhhers  ${{needs.hello_world_job.outputs.latest_release_tag}}"
       # - name: Create Release
       #   id: create_release
